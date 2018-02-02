@@ -4,12 +4,14 @@ using System.Text;
 
 namespace GameOfLife
 {
-    interface GameOfLifeInterface
+    public interface IGameOfLifeService
     {
 
         int CountLivingNeighbours (int row, int column);
 
-        bool IsAlive(int row, int column);
+        bool IsAlive(Cell myCell);
+
+        Cell GetCell(int row, int column);
 
         void NextGenerationGrid();
 
