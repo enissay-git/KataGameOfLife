@@ -7,15 +7,11 @@ namespace GameOfLife
     public interface IGameOfLifeService
     {
 
-        int CountLivingNeighbours (int row, int column);
+        bool[,] GetBoard();
 
-        bool IsAlive(Cell myCell);
+        void NextGenerationBoard();
 
-        Cell GetCell(int row, int column);
-
-        void NextGenerationGrid();
-
-        void InitFirstGenerationGrid(int heigth, int width, int[,] livingCellsPosition);
+        void InitFirstGenerationBoard(int heigth, int width, List<Tuple<int,int>> livingCellsPosition);
 
     }
 }
