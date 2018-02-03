@@ -11,7 +11,7 @@ namespace GameOfLife
 
         void NextGenerationBoard();
 
-        void InitFirstGenerationBoard(int heigth, int width, List<Tuple<int,int>> livingCellsPosition);
+        void InitFirstGenerationBoard(uint width, uint height, List<Tuple<uint, uint>> livingCellsPosition);
 
     }
 }
