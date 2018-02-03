@@ -6,27 +6,17 @@ namespace GameOfLife
 {
     class GameOfLifeService : IGameOfLifeService
     {
-        public int CountLivingNeighbours(int row, int column)
+        public bool[,] GetBoard()
         {
             throw new NotImplementedException();
         }
 
-        public Cell GetCell(int row, int column)
+        public void InitFirstGenerationBoard(int heigth, int width, List<Tuple<int, int>> livingCellsPosition)
         {
             throw new NotImplementedException();
         }
 
-        public void InitFirstGenerationGrid(int heigth, int width, int[,] livingCellsPosition)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsAlive(Cell myCell)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NextGenerationGrid()
+        public void NextGenerationBoard()
         {
             throw new NotImplementedException();
         }
