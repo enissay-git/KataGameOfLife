@@ -18,7 +18,7 @@ namespace GameOfLifeTest
 
         private void InitTest ()
         {
-            myInterface = null;
+            myInterface = new GameOfLifeService();
         }
 
         private void InitTest(uint width, uint height, List<Tuple<uint, uint>> livingCellsPosition)
@@ -42,9 +42,9 @@ namespace GameOfLifeTest
 
         private bool CheckBoardWithListOfLivingCells (bool[,] board, List<Tuple<uint, uint>> livingCellsPosition)
         {
-            for (var x = 0; x < board.Length ; x++)
+            for (var x = 0; x < board.GetLength(0); x++)
             {
-                for (var y = 0; y < board.GetLength(x); y++)
+                for (var y = 0; y < board.GetLength(1); y++)
                 {
                     if(board[x,y] != ComparePositionWithListOfTuples(x, y, livingCellsPosition))
                     {
@@ -88,7 +88,6 @@ namespace GameOfLifeTest
             var newLivingCellPosition = new List<Tuple<uint, uint>>();
 
             newLivingCellPosition.Add(new Tuple<uint, uint>(0, 0));
-            newLivingCellPosition.Add(new Tuple<uint, uint>(0, 1));
             newLivingCellPosition.Add(new Tuple<uint, uint>(0, 2));
             newLivingCellPosition.Add(new Tuple<uint, uint>(1, 0));
             newLivingCellPosition.Add(new Tuple<uint, uint>(1, 2));
@@ -168,9 +167,6 @@ namespace GameOfLifeTest
         {
             var livingCellPosition = new List<Tuple<uint, uint>>();
             InitTest(0, 0, livingCellPosition);
-
-            myInterface.NextGenerationBoard();
-
             Assert.IsNotNull(myInterface.GetBoard());
         }
 
@@ -184,6 +180,12 @@ namespace GameOfLifeTest
             Assert.ThrowsException<OutOfBoundPositionException>(() => InitTest(5, 5, livingCellPosition));
         }
 
+        [TestMethod]
+        public void when_get_board_without_first_init_then_return_null()
+        {
+            InitTest();
+            Assert.IsNull(myInterface.GetBoard());
+        }
 
 
     }
